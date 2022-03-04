@@ -11,6 +11,7 @@ pygame.init()
 
 screen = get_screen(fullscreen)
 pygame.display.set_caption(title)
+pygame.display.set_icon(pygame.image.load("./icon.ico"))
 clock = pygame.time.Clock()
 word = get_word("word.txt").upper()
 cell_size = min(width // (len(word)), 50)

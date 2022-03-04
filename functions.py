@@ -1,4 +1,5 @@
 import importlib
+import math
 import os
 
 from pygame import FULLSCREEN
@@ -55,5 +56,13 @@ def get_screen(fullscreen=False):
     return screen
 
 
+def open_image(path):
+    return Image.open(path)
+
+
 def distance(pos1, pos2):
     return ((pos1[0] - pos2[0]) ** 2 + (pos1[1] - pos2[1]) ** 2) ** 0.5
+
+
+def to_degrees(radians):
+    return radians * 180 / math.pi

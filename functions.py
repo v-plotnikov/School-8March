@@ -25,11 +25,15 @@ def pil_to_pygame(img):
     return py_image
 
 
-def get_text(text, font_size=30, color=(0, 0, 0, 255), align="center", anchor="mm", pos=None):
+def get_text(text, color=(0, 0, 0, 255), align="center", anchor="mm", pos=None, fullscreen=False):
+    k = 1
+    if fullscreen:
+        k = 2
+    fsize = 30 * k
     text = str(text)
-    img_size = 345, round(font_size * 1.2)
-    im = Image.new('RGBA', img_size, color=(255, 255, 255, 150))
-    font = ImageFont.truetype('./RobotoMono-LightItalic.ttf', size=font_size)
+    img_size = round(len(text) * fsize / 1.66), round(fsize * 1.05)
+    im = Image.new('RGBA', img_size, color=(0, 0, 0, 0))
+    font = ImageFont.truetype('./RobotoMono-LightItalic.ttf', size=fsize)
     drawer = ImageDraw.Draw(im)
     if pos is None:
         pos = img_size[0] // 2, img_size[1] // 2
@@ -66,3 +70,7 @@ def distance(pos1, pos2):
 
 def to_degrees(radians):
     return radians * 180 / math.pi
+
+def get_word(path):
+    with open(path, encoding="utf-8") as file:
+        return file.read().strip()

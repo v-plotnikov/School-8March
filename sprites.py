@@ -14,10 +14,10 @@ class Cell(Sprite):
     line_color = black
     text_color = black
     fill = light_blue
-    size = 50
 
-    def __init__(self, pos, character):
+    def __init__(self, pos, character, size=50):
         Sprite.__init__(self, all_sprites, cells_group)
+        self.size = size
         self.pos = pos[0] - self.size // 2, pos[1] - self.size // 2
         self.character = character
         self.opened = False
